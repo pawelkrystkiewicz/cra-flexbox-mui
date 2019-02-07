@@ -1,0 +1,21 @@
+.footer {
+	background: #a8b0be;
+	height: 4vh;
+	flex: 1;
+}
+
+.flex-container {
+	width: 100vw;
+	display: flex;
+	display: -webkit-flex;
+	flex-wrap: nowrap;
+	flex-direction: column;
+	// justify-content: space-around;
+	// align-items: stretch;
+	// align-content: center;
+	min-height: 100vh;
+}
+.table {
+	margin: 40px;
+	flex: 1;
+}
