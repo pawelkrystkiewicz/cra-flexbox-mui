@@ -1,129 +1,154 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MUIDataTable from 'mui-datatables';
 import MuiTablePagination from './TableFooter';
 import Status from './Status';
+
+const data = [
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' },
+	{ name: 'John Doe', company: 'BaTech Corpran', city: 'New York', state: 'NY' }
+];
+
 const Table = (props) => {
-	const columns = [
-		{
-			name: 'Name',
-			options: {
-				filter: true,
-				sort: true
-			}
-		},
-		{
-			name: 'Company',
-			options: {
-				filter: true,
-				sort: false
-			}
-		},
-		{
-			name: 'City',
-			options: {
-				filter: true,
-				sort: false
-			}
-		},
-		{
-			name: 'State',
-			options: {
-				filter: true,
-				sort: true,
-				customBodyRender: (value, tableMeta, updateValue) => {
-					return <Status value={value} tableMeta={tableMeta} updateValue={updateValue} />;
-				}
-			}
-		}
-	];
+	const { defaultVisibleRows } = props;
+	const [ page, setPage ] = useState(1);
+	const [ visibleRows, setVisibleRows ] = useState(defaultVisibleRows || 30);
+	const [ sorting, setSorting ] = useState(`State`);
 
-	const data = [
-		[ 'Joe James', 'Test Corp', 'Yonkers', 'NY' ],
-		[ 'John Walsh', 'Test Corp', 'Hartford', 'CT' ],
-		[ 'Bob Herm', 'Test Corp', 'Tampa', 'FL' ],
-		[ 'James Houston', 'Test Corp', 'Dallas', 'TX' ],
-		[ 'Joe James', 'Test Corp', 'Yonkers', 'NY' ],
-		[ 'John Walsh', 'Test Corp', 'Hartford', 'CT' ],
-		[ 'Bob Herm', 'Test Corp', 'Tampa', 'FL' ],
-		[ 'James Houston', 'Test Corp', 'Dallas', 'TX' ],
-		[ 'Joe James', 'Test Corp', 'Yonkers', 'NY' ],
-		[ 'John Walsh', 'Test Corp', 'Hartford', 'CT' ],
-		[ 'Bob Herm', 'Test Corp', 'Tampa', 'FL' ],
-		[ 'James Houston', 'Test Corp', 'Dallas', 'TX' ],
-		[ 'Joe James', 'Test Corp', 'Yonkers', 'NY' ],
-		[ 'John Walsh', 'Test Corp', 'Hartford', 'CT' ],
-		[ 'Bob Herm', 'Test Corp', 'Tampa', 'FL' ],
-		[ 'James Houston', 'Test Corp', 'Dallas', 'TX' ],
-		[ 'Joe James', 'Test Corp', 'Yonkers', 'NY' ],
-		[ 'John Walsh', 'Test Corp', 'Hartford', 'CT' ],
-		[ 'Bob Herm', 'Test Corp', 'Tampa', 'FL' ],
-		[ 'James Houston', 'Test Corp', 'Dallas', 'TX' ],
-		[ 'Joe James', 'Test Corp', 'Yonkers', 'NY' ],
-		[ 'John Walsh', 'Test Corp', 'Hartford', 'CT' ],
-		[ 'Bob Herm', 'Test Corp', 'Tampa', 'FL' ],
-		[ 'James Houston', 'Test Corp', 'Dallas', 'TX' ],
-		[ 'Joe James', 'Test Corp', 'Yonkers', 'NY' ],
-		[ 'John Walsh', 'Test Corp', 'Hartford', 'CT' ],
-		[ 'Bob Herm', 'Test Corp', 'Tampa', 'FL' ],
-		[ 'James Houston', 'Test Corp', 'Dallas', 'TX' ],
-		[ 'Joe James', 'Test Corp', 'Yonkers', 'NY' ],
-		[ 'John Walsh', 'Test Corp', 'Hartford', 'CT' ],
-		[ 'Bob Herm', 'Test Corp', 'Tampa', 'FL' ],
-		[ 'James Houston', 'Test Corp', 'Dallas', 'TX' ],
-		[ 'Joe James', 'Test Corp', 'Yonkers', 'NY' ],
-		[ 'John Walsh', 'Test Corp', 'Hartford', 'CT' ],
-		[ 'Bob Herm', 'Test Corp', 'Tampa', 'FL' ],
-		[ 'James Houston', 'Test Corp', 'Dallas', 'TX' ],
-		[ 'Joe James', 'Test Corp', 'Yonkers', 'NY' ],
-		[ 'John Walsh', 'Test Corp', 'Hartford', 'CT' ],
-		[ 'Bob Herm', 'Test Corp', 'Tampa', 'FL' ],
-		[ 'James Houston', 'Test Corp', 'Dallas', 'TX' ],
-		[ 'Joe James', 'Test Corp', 'Yonkers', 'NY' ],
-		[ 'John Walsh', 'Test Corp', 'Hartford', 'CT' ],
-		[ 'Bob Herm', 'Test Corp', 'Tampa', 'FL' ],
-		[ 'James Houston', 'Test Corp', 'Dallas', 'TX' ],
-		[ 'Joe James', 'Test Corp', 'Yonkers', 'NY' ],
-		[ 'John Walsh', 'Test Corp', 'Hartford', 'CT' ],
-		[ 'Bob Herm', 'Test Corp', 'Tampa', 'FL' ],
-		[ 'James Houston', 'Test Corp', 'Dallas', 'TX' ],
-		[ 'Joe James', 'Test Corp', 'Yonkers', 'NY' ],
-		[ 'John Walsh', 'Test Corp', 'Hartford', 'CT' ],
-		[ 'Bob Herm', 'Test Corp', 'Tampa', 'FL' ],
-		[ 'James Houston', 'Test Corp', 'Dallas', 'TX' ],
-		[ 'Joe James', 'Test Corp', 'Yonkers', 'NY' ],
-		[ 'John Walsh', 'Test Corp', 'Hartford', 'CT' ],
-		[ 'Bob Herm', 'Test Corp', 'Tampa', 'FL' ],
-		[ 'James Houston', 'Test Corp', 'Dallas', 'TX' ],
-		[ 'Joe James', 'Test Corp', 'Yonkers', 'NY' ],
-		[ 'John Walsh', 'Test Corp', 'Hartford', 'CT' ],
-		[ 'Bob Herm', 'Test Corp', 'Tampa', 'FL' ],
-		[ 'James Houston', 'Test Corp', 'Dallas', 'TX' ]
-	];
-
-	const options = {
-		filterType: 'checkbox'
-		// 	customFooter: (
-		// 		count,
-		// 		page,
-		// 		rowsPerPage,
-		// 		changeRowsPerPage,
-		// 		changePage
-		// 	) => {
-		// 		return (
-		// 			<MuiTablePagination
-		// 				changePage={changePage}
-		// 				count={count}
-		// 				page={page}
-		// 				rowsPerPage={rowsPerPage}
-		// 				changeRowsPerPage={changeRowsPerPage}
-		// 			/>
-		// 		);
-		// 	}
+	const Toolbar = () => {
+		return (
+			<span class="table__sorting">
+				{`Sort by `}
+				<select onChange={(e) => setSorting(e.target.value)} value={sorting}>
+					<option value="State">State</option>
+					<option value="City">City</option>
+					<option value="Name">Name</option>
+				</select>
+			</span>
+		);
 	};
 
+	function paginate(array, visibleRows, page) {
+		page--; // because pages logically start with 1, but technically with 0
+		return array.slice(page * visibleRows, (page + 1) * visibleRows);
+	}
+	const Pagination = (props) => {
+		return (
+			<div className="table__pagination">
+				{` rows per page`}
+				<span className="table_pagination--rows-per-page">
+					<select
+						onChange={(e) => {
+							setVisibleRows(e.target.value);
+							setPage(1);
+						}}
+						value={visibleRows}
+					>
+						<option value={30}>30</option>
+						<option value={50}>50</option>
+						<option value={100}>100</option>
+					</select>
+				</span>
+				<div>{`Page ${page}`}</div>
+				<span className="table__pagination--nav">
+					<button disabled={page === 1} onClick={(e) => setPage(page - 1)}>
+						{`<`}
+					</button>
+					<button disabled={data.length - visibleRows * page < 0} onClick={(e) => setPage(page + 1)}>
+						{`>`}
+					</button>
+				</span>
+			</div>
+		);
+	};
+	let rows = paginate(data, visibleRows, page);
+	console.log(rows);
+	rows = rows.map(({ id, name, company, city, state }) => (
+		<div key={id} className="row">
+			<div className="column">{name}</div>
+			<div className="column">{company}</div>
+			<div className="column">{city}</div>
+			<div className="column">{state}</div>
+		</div>
+	));
+
 	return (
-		<div className="table">
-			<MUIDataTable title={'Employee List'} data={data} columns={columns} options={options} />
+		<div className="table__main">
+			<Toolbar />
+			<div className="table__body">{rows}</div>
+			<Pagination />
 		</div>
 	);
 };

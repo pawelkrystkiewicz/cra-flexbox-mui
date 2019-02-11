@@ -1,3 +1,4 @@
+$background-color: #474747;
 * {
 	padding: 0;
 	margin: 0;
@@ -7,11 +8,8 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 html,
-body,
-#fullheight {
-	min-height: 100% !important;
-	height: 100%;
-}
-#fullheight {
-	width: 100vw;
+body {
+	color: white;
+	height: 100vh;
+	background: $background-color;
 }

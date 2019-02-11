@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import {Context} from "../App"
 
 const styles = {
   root: {
@@ -24,6 +25,8 @@ const styles = {
 function NavBar(props) {
   const { classes } = props;
   return (
+    <Context.Consumer>
+      {(context)=>(
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
@@ -33,10 +36,11 @@ function NavBar(props) {
           <Typography variant="h6" color="inherit" className={classes.grow}>
             News
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit" onClick={context.toggleModal}>Login</Button>
         </Toolbar>
       </AppBar>
-    </div>
+    </div>)}
+    </Context.Consumer>
   );
 }
 
